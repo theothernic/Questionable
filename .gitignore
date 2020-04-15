@@ -5,6 +5,9 @@ project.lock.json
 *.pyc
 nupkg/
 
+# Default/production appsettings.json
+appsettings.json
+
 # Visual Studio Code
 .vscode
 
