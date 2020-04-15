@@ -8,6 +8,7 @@ namespace Data.Contexts
         public DataContext(DbContextOptions options) : base(options)
         {}
         
+        private DbSet<Answer> Answers { get; set; }
         private DbSet<Question> Questions { get; set; }
         private DbSet<Tag> Tags { get; set; }
         private DbSet<QuestionTag> QuestionTags { get; set; }
