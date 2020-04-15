@@ -7,5 +7,5 @@ if [ ! -d ${BUILD_DIR} ]; then
   mkdir -p ${BUILD_DIR};
 fi
 
-/usr/bin/dotnet publish -c Release -r linux-x64 -o ${BUILD_DIR}; 
+/usr/bin/dotnet publish -c Release -r linux-x64 -o ${BUILD_DIR} --no-self-contained; 
 
