@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Data.Models
 {
@@ -8,8 +9,9 @@ namespace Data.Models
         public Guid Id { get; set; }
         public string Text { get; set; }
         
-        public virtual IList<Answer> Answers { get; set; }
+        public IList<Answer> Answers { get; set; }
         
+        [JsonProperty("tags")]
         public IList<QuestionTag> QuestionTags { get; set; }
     }
 }

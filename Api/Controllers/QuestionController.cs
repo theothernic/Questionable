@@ -1,3 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Data.Models;
+using Data.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
@@ -6,16 +11,22 @@ namespace Api.Controllers
     [Route("api/[controller]")]
     public class QuestionController : Controller
     {
-        // GET
-        public IActionResult Index()
+        private readonly QuestionRepository _repo;
+        public QuestionController(QuestionRepository repo)
         {
-            return View();
+            _repo = repo;
+        }
+        // GET
+        public async Task<IEnumerable<Question>> Index()
+        {
+            return await _repo.All();
         }
 
+        [HttpGet]
         [Route("{id}")]
-        public IActionResult Show()
+        public async Task<Question> Show(Guid id)
         {
-            return View();
+            return await _repo.Find(id);
         }
     }
 }

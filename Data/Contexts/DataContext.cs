@@ -3,20 +3,20 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Data.Contexts
 {
-    public class DataContext: DbContext
+    public class DataContext: DbContext, IDataContext
     {
         public DataContext(DbContextOptions options) : base(options)
         {}
         
-        private DbSet<Answer> Answers { get; set; }
-        private DbSet<Question> Questions { get; set; }
-        private DbSet<Tag> Tags { get; set; }
-        private DbSet<QuestionTag> QuestionTags { get; set; }
+        public DbSet<Answer> Answers { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<QuestionTag> QuestionTags { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
+            
             modelBuilder.Entity<QuestionTag>().HasKey(qt => new {qt.QuestionId, qt.TagId});
 
             modelBuilder.Entity<QuestionTag>()
