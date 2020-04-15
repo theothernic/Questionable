@@ -10,5 +10,24 @@ namespace Data.Contexts
         
         private DbSet<Question> Questions { get; set; }
         private DbSet<Tag> Tags { get; set; }
+        private DbSet<QuestionTag> QuestionTags { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<QuestionTag>().HasKey(qt => new {qt.QuestionId, qt.TagId});
+
+            modelBuilder.Entity<QuestionTag>()
+                .HasOne<Question>(qt => qt.Question)
+                .WithMany(q => q.QuestionTags)
+                .HasForeignKey(qt => qt.QuestionId);
+
+
+            modelBuilder.Entity<QuestionTag>()
+                .HasOne<Tag>(qt => qt.Tag)
+                .WithMany(tag => tag.QuestionTags)
+                .HasForeignKey(qt => qt.TagId);
+        }
     }
 }

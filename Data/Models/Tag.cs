@@ -8,6 +8,6 @@ namespace Data.Models
         public Guid Id { get; set; }
         public string Name { get; set; }
         
-        public List<Question> Questions { get; set; }
+        public IList<QuestionTag> QuestionTags { get; set; }
     }
 }

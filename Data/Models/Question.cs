@@ -8,7 +8,8 @@ namespace Data.Models
         public Guid Id { get; set; }
         public string Text { get; set; }
         
-        public List<Answer> Answers { get; set; }
-        public List<Tag> Tags { get; set; }
+        public virtual IList<Answer> Answers { get; set; }
+        
+        public IList<QuestionTag> QuestionTags { get; set; }
     }
 }
