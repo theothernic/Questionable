@@ -39,7 +39,7 @@ namespace Data.Migrations
 
                     b.HasIndex("QuestionId");
 
-                    b.ToTable("Answer");
+                    b.ToTable("Answers");
                 });
 
             modelBuilder.Entity("Data.Models.Question", b =>
